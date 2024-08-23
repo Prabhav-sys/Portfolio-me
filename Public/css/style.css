@@ -1,0 +1,230 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--background);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+:root {
+    --background: #f0f0f0;
+    --text-color: #333;
+    --primary-color: #007bff;
+    --accent-color: #ff4081;
+    --navbar-height: 70px;
+}
+
+/* Dark mode theme variables */
+body.dark-mode {
+    --background: #121212;
+    --text-color: #fff;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s ease;
+}
+
+.logo-video{
+    margin: auto;
+    padding:auto;
+    height: 70px;
+    width: auto;
+    border-radius: 4%;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: var(--navbar-height);
+}
+
+.logo-img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: rotate(360deg);
+}
+
+.menu-list {
+    display: flex;
+    list-style: none;
+}
+
+.menu-list li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.menu-list li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.menu-list li a:hover {
+    color: var(--accent-color);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    min-width: 150px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 4px;
+    transition: 0.3s;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    width: 0;
+    padding: 0;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.search-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+    background: var(--accent-color);
+}
+
+.search-container:hover .search-input {
+    width: 150px;
+    padding: 10px;
+    opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .menu-list {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .menu-list.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--navbar-height);
+        right: 0;
+        background: rgba(255, 255, 255, 0.9);
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Fullscreen overlay menu */
+.menu-list.fullscreen {
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: var(--accent-color);
+    z-index: 1001;
+    width: 0%;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary-color);
+    color: white;
+}
+
+.toggle-theme-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-theme-btn:hover {
+    background: var(--primary-color);
+}
+
+/* Section Styling */
+.content {
+    padding: 20px;
+}
+
+section {
+    margin: 40px 0;
+}
+
+.home {
+    text-align: center;
+    padding: 100px 0;
+}

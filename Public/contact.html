@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Prabhat Kumar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1c1c1c;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #2c2c2c;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #00aaff;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.5em;
+            color: #999;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info, .contact-form {
+            background: #333;
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-info:hover, .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-info h2, .contact-form h2 {
+            font-size: 2.2em;
+            color: #00aaff;
+            margin-bottom: 20px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .contact-info ul li a {
+            text-decoration: none;
+            color: #00aaff;
+        }
+
+        .contact-info ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            background: #444;
+            border: 1px solid #555;
+            color: #fff;
+            font-size: 1em;
+            border-radius: 6px;
+        }
+
+        .contact-form button {
+            padding: 15px;
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            font-size: 1.2em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #008ecc;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .header p {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Contact Me</h1>
+            <p>Get in touch using the form below or through my contact details.</p>
+        </div>
+        <div class="content">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <ul>
+                    <li>Email: <a href="mailto:prabhat602202@gmail.com">prabhat602202@gmail.com</a></li>
+                    <li>Phone: <a href="tel:9310061614">9310061614</a></li>
+                </ul>
+            </div>
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form id="contact-form">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                    <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

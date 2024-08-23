@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Navigation Bar</title>
+
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--background);
+            color: var(--text-color);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        :root {
+            --background: #220047;
+            --text-color: #333;
+            --primary-color: #007bff;
+            --accent-color: #ff4081;
+            --navbar-height: 70px;
+        }
+
+
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgb(23, 30, 74);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+        }
+
+        .logo-video {
+            margin: auto;
+            padding: auto;
+            height: 70px;
+            width: auto;
+            border-radius: 4%;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: var(--navbar-height);
+        }
+
+        .logo-img {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: rotate(360deg);
+        }
+
+        .menu-list {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu-list li {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .menu-list li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .menu-list li a:hover {
+            color: var(--accent-color);
+        }
+
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger-menu .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 4px;
+            transition: 0.3s;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-input {
+            width: 0;
+            padding: 0;
+            opacity: 0;
+            transition: width 0.3s ease, opacity 0.3s ease;
+        }
+
+        .search-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--accent-color);
+        }
+
+        .search-container:hover .search-input {
+            width: 150px;
+            padding: 10px;
+            opacity: 1;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .menu-list {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+
+            .menu-list.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--navbar-height);
+                right: 0;
+                background: rgba(255, 255, 255, 0.9);
+                width: 100%;
+                padding: 10px;
+            }
+        }
+
+        /* Fullscreen overlay menu */
+        .menu-list.fullscreen {
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: var(--accent-color);
+            z-index: 1001;
+            width: 0%;
+        }
+
+        /* Section Styling */
+        .content {
+            padding: 20px;
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        .home {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Home Section Styling */
+        .home {
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            background: linear-gradient(135deg, #007bff, #ff4081);
+            color: white;
+        }
+        /* Frame container */
+        .frame-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px;
+            background: linear-gradient(135deg, #007bff, #ff4081);
+            border-radius: 20px;
+            margin: 50px auto;
+            max-width: 1200px;
+            color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* Photo container */
+        .photo-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            transition: transform 0.6s ease-in-out, filter 0.6s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hover effect for photo */
+        .profile-photo:hover {
+            transform: scale(1.1) rotate(10deg);
+            filter: brightness(1.2);
+        }
+
+        /* Continuous animation (Optional) */
+        @keyframes floating {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .profile-photo {
+            animation: floating 1.5s ease-in-out infinite;
+        }
+
+        /* Text container */
+        .text-container {
+            flex: 2;
+            max-width: 600px;
+            padding-left: 50px;
+        }
+
+        .animated-text {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: text-incoming 1.5s forwards;
+        }
+
+        /* Animations for text appearance */
+        @keyframes text-incoming {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animated-text:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .animated-text:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        /* Special highlight for specific words */
+        .highlight {
+            font-size: 3rem;
+            color: #ff4081;
+            animation: highlight-fade-in 2s ease-in-out forwards;
+        }
+
+        @keyframes highlight-fade-in {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .highlight-special {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #fa0000, #4400ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Ensures text stays transparent in supported browsers */
+    background-clip: text; /* Fallback for modern browsers */
+    color: transparent; /* Ensures non-webkit browsers show no color */
+    animation: special-glow 3s ease-in-out infinite;
+}
+
+/* Glowing effect */
+@keyframes special-glow {
+    0% {
+        text-shadow: 0 0 10px #fa0000, 0 0 20px #4400ff;
+    }
+    100% {
+        text-shadow: 0 0 20px #fa0000, 0 0 30px #4400ff;
+    }
+}
+
+
+        .highlight-unique {
+            font-size: 3rem;
+            color: #fff;
+            font-style: italic;
+            animation: unique-bounce 1.5s infinite;
+        }
+
+        @keyframes unique-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+    <link rel="icon" href="/images/favi.png">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <video src="/images/n-logo.mp4" type="video/mp4" class="logo-video" autoplay muted loop>
+
+                        </video>
+                    </a>
+                </div>
+                <div class="menu-container">
+                    <ul class="menu-list">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li class="dropdown">
+                            <a href="/skills">Skills</a>
+
+                        </li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-btn">Search</button>
+                </div>
+                <div class="hamburger-menu" onclick="toggleMobileMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </nav>
+        <div class="progress-bar"></div>
+    </header>
+
+    <div class="content">
+        <section class="intro-section">
+            <div class="frame-container">
+                <div class="photo-container">
+                    <img src="/images/favi.png" alt="Your Photo" class="profile-photo">
+                </div>
+                <div class="text-container">
+                    <h1 class="animated-text">I am a <span class="highlight">Web Developer</span></h1>
+                    <h2 class="animated-text">A <span class="highlight-special">Creative Enthusiast</span> for
+                        Innovation</h2>
+                    <h3 class="animated-text">Building <span class="highlight-unique">Digital Solutions</span> that
+                        Inspire</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <a href="/about">About me</a>
+            <p>Details about you...</p>
+        </section>
+        <section class="projects">
+            <a href="/projects">Projects</a>
+            <p>Some cool projects here...</p>
+        </section>
+
+    </div>
+
+
+    <script src="/Public/js/script.js"></script>
+</body>
+
+</html>

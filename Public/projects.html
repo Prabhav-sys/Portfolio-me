@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Prabhat Kumar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1e1e1e;
+            color: #ddd;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #f39c12;
+            transition: color 0.3s;
+        }
+
+        .header h1:hover {
+            color: #e67e22;
+        }
+
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .project {
+            flex: 1;
+            min-width: 300px;
+            background: #2c3e50;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .project img {
+            width: 100%;
+            height: auto;
+            border-bottom: 5px solid #f39c12;
+            transition: transform 0.3s;
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h2 {
+            font-size: 1.8em;
+            color: #f39c12;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .project-content h2:hover {
+            color: #e67e22;
+        }
+
+        .project-content p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .project-content a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            color: #fff;
+            background: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .project-content a:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .projects {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>My Projects</h1>
+        </div>
+        <div class="projects">
+            <div class="project">
+                <img src="/images/quiz 02.png" alt="Quiz Application">
+                <div class="project-content">
+                    <h2>Quiz Application</h2>
+                    <p>This was a school project for my 12th class where I developed a quiz application. I received full marks for this project. It was an excellent opportunity to enhance my frontend development skills.</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="/images/ds.png" alt="Virtual Job Simulation">
+                <div class="project-content">
+                    <h2>Virtual Job Simulation - Data Science</h2>
+                    <p>During my 1-month internship at Accenture, I worked on a virtual job simulation for data science. This experience helped me understand the workflow of data scientists and gave me practical insights into the field.</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="/images/mastercard.png" alt="Virtual Internship - Security Manager">
+                <div class="project-content">
+                    <h2>Virtual Internship - Security Manager</h2>
+                    <p>In this virtual internship with MasterCard, I gained experience in security management. It was a valuable experience that enhanced my understanding of security protocols and practices in the industry.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript for interaction or additional animations can be added here if needed
+    </script>
+</body>
+</html>
